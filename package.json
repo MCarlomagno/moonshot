@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no tests installed\" && exit 1",
-    "build": "webpack", 
-    "serve": "webpack --watch" 
+    "build": "webpack",
+    "serve": "webpack --watch"
   },
   "author": "Marcos Carlomagno",
   "license": "MIT",
