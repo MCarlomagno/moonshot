@@ -24,9 +24,8 @@ class MainScene extends Phaser.Scene {
         this.cursor = this.input.keyboard.createCursorKeys();
     
         // rocket properties
-        this.rocket = this.physics.add.image(this.width/2, this.height/2, "rocket");
+        this.rocket = this.add.image(this.width/2, this.height/2, "rocket");
         this.rocket.setScale(0.2);
-        this.rocket.setCollideWorldBounds(true);
 
         // text 
         this.add.text(

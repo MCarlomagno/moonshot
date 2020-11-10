@@ -8,6 +8,11 @@ const config = {
 	rocketVelocity: 5,
 	physics: {
 		default: "arcade",
+		arcade: {
+			gravity: {
+				y: 500,
+			}
+		}
 	} 
 }
 
