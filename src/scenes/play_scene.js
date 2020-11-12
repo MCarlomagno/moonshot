@@ -15,7 +15,7 @@ class PlayScene extends Phaser.Scene {
         // assets
         this.load.image("rocket", "assets/rocket.png");
         this.load.image("background", "assets/background.jpg");
-        this.load.image("moon", "assets/moon.ppg")
+        this.load.image("moon", "assets/moon.png")
     }
     
     create() {
@@ -26,22 +26,19 @@ class PlayScene extends Phaser.Scene {
         this.cursor = this.input.keyboard.createCursorKeys();
     
         // rocket properties
-        this.rocket = this.physics.add.image(this.width/2, this.height/2, "rocket");
+        this.rocket = this.physics.add.sprite(this.width/2, this.height/2, "rocket");
         this.rocket.setScale(0.2);
         this.rocket.setCollideWorldBounds(true);
-
-        // test
-
-        const x = 100;
-        const y = 100;
-
-        this.moon = new Moon(this.width/3, this.height/3, "moon");
-
+        
+        // moon initialization
+        this.moon = new Moon(this, this.width/2, this.height-150, "moon");
     }
     
     update(time, delta) {
         this.background.tilePositionY -= 0.5;
         this.handleKeyboard(this.cursor, this.rocket);
+
+        this.physics.collide(this.rocket, this.moon);
 
         // this.physics.moveTo(this.rocket, this.game.input.mousePointer.x,
         //    this.game.input.mousePointer.y, 100);
