@@ -25,6 +25,7 @@ class MainScene extends Phaser.Scene {
     
         // rocket properties
         this.rocket = this.add.image(this.width/2, this.height/2, "rocket");
+        this.rocket.setRotation(3.14 * 3/2);
         this.rocket.setScale(0.2);
 
         // text 
