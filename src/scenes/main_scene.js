@@ -24,9 +24,9 @@ class MainScene extends Phaser.Scene {
         this.cursor = this.input.keyboard.createCursorKeys();
     
         // rocket properties
-        this.rocket = this.add.image(this.width/2, this.height/2, "rocket");
-        this.rocket.setRotation(3.14 * 3/2);
-        this.rocket.setScale(0.2);
+        this.ship = this.add.image(this.width/2, this.height/2, "rocket");
+        this.ship.setRotation(3.14 * 3/2);
+        this.ship.setScale(0.2);
 
         // text 
         this.add.text(
@@ -42,10 +42,10 @@ class MainScene extends Phaser.Scene {
     }
     
     update(time, delta) {
-        this.handleKeyboard(this.cursor, this.rocket);
+        this.handleKeyboard(this.cursor, this.ship);
     }
     
-    handleKeyboard(cursor, rocket) {
+    handleKeyboard(cursor, ship) {
         if(cursor.space.isDown && this.isActive) {
             this.scene.add("play_scene", new PlayScene);
             this.scene.start("play_scene");
