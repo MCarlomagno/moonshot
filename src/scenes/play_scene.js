@@ -4,8 +4,6 @@ class PlayScene extends Phaser.Scene {
 
     width = window.innerWidth;
     height = window.innerHeight;
-    rocketVelocity = 5;
-
 
     constructor() {
         super({key: "play_scene"});
@@ -22,19 +20,16 @@ class PlayScene extends Phaser.Scene {
         // background
         this.background = this.add.tileSprite(0, 0, this.width*2, this.height*2, "background");
 
-        // floor
-        this.floor = this.add.rectangle(this.width/2, this.height-15, this.width, 30, 0xff00FF00);
-        this.physics.add.existing(this.floor);
-        this.floor.body.allowGravity = false;
-        this.floor.body.setCollideWorldBounds(true);
-
         // keyboard initialization
         this.cursor = this.input.keyboard.createCursorKeys();
     
         // rocket properties
-        this.rocket = this.physics.add.sprite(this.width/2, this.height-200, "rocket");
-        this.rocket.setScale(0.2);
-        this.rocket.setCollideWorldBounds(true);
+        this.ship = this.physics.add.sprite(this.width/2, this.height-200, "rocket");
+        this.ship.setScale(0.2);
+        this.ship.setCollideWorldBounds(true);
+        this.ship.body.drag.set(0.99);
+        this.ship.setAngle(-90);
+        this.ship.body.maxVelocity.set(200);
         
         // moon properties
         this.moon = this.physics.add.staticImage(this.width/2, this.height/3, "moon");
@@ -45,18 +40,24 @@ class PlayScene extends Phaser.Scene {
     
     update(time, delta) {
         this.background.tilePositionY -= 0.5;
-        this.handleKeyboard(this.cursor, this.rocket);
-        this.physics.collide(this.rocket, this.moon);
-        this.physics.collide(this.rocket, this.floor);
+        this.handleKeyboard();
+        this.physics.collide(this.ship, this.moon);
     }
     
-    handleKeyboard(cursor, rocket) {
+    handleKeyboard() {
 
-        if(cursor.down.isDown) {
-            rocket.y += this.rocketVelocity;
+        if (this.cursor.up.isDown){
+            this.physics.velocityFromRotation(this.ship.rotation, 300, this.ship.body.acceleration);
+        } else {
+            this.ship.setAcceleration(0);
         }
-        if(cursor.up.isDown) {
-            rocket.y -= this.rocketVelocity;
+    
+        if (this.cursor.left.isDown){
+            this.ship.setAngularVelocity(-300);
+        } else if (this.cursor.right.isDown){
+            this.ship.setAngularVelocity(300);
+        } else{
+            this.ship.setAngularVelocity(0);
         }
     }
 }
