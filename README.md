@@ -22,20 +22,6 @@ npm run serve
 ```
 or you can just directly open the index.html file from your browser.
 
-## Technologies
-
-### Javascript (ES6)
-On June 17, 2015, ECMA International published the sixth major version of ECMAScript, which is officially called ECMAScript 2015, and was initially referred to as ECMAScript 6 or ES6. Since then, ECMAScript standards are on yearly release cycles. This documentation refers to the latest draft version, which is currently ECMAScript 2020.
-
-### Webpack
-At its core, webpack is a static module bundler for modern JavaScript applications. When webpack processes your application, it internally builds a dependency graph which maps every module your project needs and generates one or more bundles.
-
-### Babel
-Babel is a tool that helps you write code in the latest version of JavaScript. When your supported environments don't support certain features natively, Babel will help you compile those features down to a supported version.
-
-### Phaser library
-Phaser is a free and fast open source framework for canvas and WebGL powered browser games.
-
 ## Demo
 https://mcarlomagno.github.io/moonshot/
 
